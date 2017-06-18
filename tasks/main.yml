@@ -1,0 +1,48 @@
+---
+- name: Allow sabnzbd web port
+  ufw:
+    rule: allow
+    port: 8080
+    proto: tcp
+  when: sabnzbd_manage_ufw
+
+- name: Allow sabnzbd ssl web port
+  ufw:
+    rule: allow
+    port: 9090
+    proto: tcp
+  when: sabnzbd_enable_ssl and sabnzbd_manage_ufw
+
+- name: Install sabnzbd from aur
+  aur: name=sabnzbd
+  become: yes
+  become_user: "{{ sabnzbd_build_user }}"
+  notify: restart sabnzbd
+
+- name: Copy sabnzbd service file
+  template:
+    src: sabnzbd.service.j2
+    dest: /usr/lib/systemd/system/sabnzbd.service
+    owner: root
+    group: root
+  notify: restart sabnzbd
+
+- name: Set ownership of sabnzbd files
+  file:
+    path: "{{ sabnzbd_dir }}"
+    owner: "{{ sabnzbd_user }}"
+    group: "{{ sabnzbd_group }}"
+    state: directory
+    recurse: yes
+  notify: restart sabnzbd
+
+- name: Copy sabnzbd config file
+  template:
+    src: sabnzbd.ini.j2
+    dest: /opt/sabnzbd/sabnzbd.ini
+    owner: "{{ sabnzbd_user }}"
+    group: "{{ sabnzbd_group }}"
+  notify: restart sabnzbd
+
+- name: Ensure sabnzbd is running
+  service: "name=sabnzbd state=started enabled=yes"

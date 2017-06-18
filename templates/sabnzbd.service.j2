@@ -1,0 +1,11 @@
+[Unit]
+Description=SABnzbd binary newsreader
+After=network.target
+
+[Service]
+ExecStart={{ sabnzbd_dir }}/SABnzbd.py -l0 -f {{ sabnzbd_dir }}/sabnzbd.ini
+User={{ sabnzbd_user }}
+Group={{ sabnzbd_group }}
+
+[Install]
+WantedBy=multi-user.target

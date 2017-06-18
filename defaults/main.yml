@@ -1,0 +1,45 @@
+---
+sabnzbd_username: admin
+sabnzbd_password: changeme
+sabnzbd_api_key: ''
+sabnzbd_nzb_key: ''
+sabnzbd_rating_enable: 1
+sabnzbd_rating_feedback: 1
+sabnzbd_rating_host: api.oznzb.com
+sabnzbd_rating_api_key: ''
+sabnzbd_dir: /opt/sabnzbd
+sabnzbd_user: sabnzbd
+sabnzbd_group: sabnzbd
+sabnzbd_folder_rename: 1
+sabnzbd_bandwidth_max: 1M
+sabnzbd_bandwidth_percent: 30
+sabnzbd_cache_limit: 230 M
+sabnzbd_dirscan_dir: ''
+sabnzbd_download_dir: ''
+sabnzbd_complete_dir: ''
+sabnzbd_email_account: ''
+sabnzbd_email_server: ''
+sabnzbd_email_from: ''
+sabnzbd_email_pwd: ''
+sabnzbd_email_to: ''
+sabnzbd_permissions: 777
+sabnzbd_download_free: 10G
+sabnzbd_host: 0.0.0.0
+sabnzbd_port: 8080
+sabnzbd_https_port: 9090
+sabnzbd_enable_ssl: false
+sabnzbd_local_ranges: 192.168.86.
+sabnzbd_servers: []
+#  - name: news.usenet.net
+#    username: someone@somedomain.com
+#    priority: 0
+#    connections: 30
+#    ssl: 1
+#    host: news.usenet.net
+#    timeout: 120
+#    ssl_verify: 2
+#    password: "password"
+#    port: 563
+#    retention: 2357
+sabnzbd_manage_ufw: false
+sabnzbd_build_user: pacaur-builder
